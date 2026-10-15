@@ -162,9 +162,3 @@ server 侧异常分四种语义：**主动停止**走清理策略——托管会
 6. **owner-control 与输入 gate**：prompt / 审批 / 取消经授权与审计的安全验收后开放；hosted 输入经真实会话 ground truth 验收后开放。
 
 gate 不止规则包：native hook 通道、协议绑定、终端渲染（conformance corpus）、输入安全、session adoption、断线恢复各有独立验收。规则、VT、server 或 adapter 任何变更都触发样本重新冻结与重新评测，分层条件随规格冻结。升级时在跑会话迁移策略挂账为待定项，验收前不承诺。
-
-## 8. 与 PR#98 及相关方案的关系
-
-**PR#98**（SSH 主机配置、远程仓库与 tmux 会话支持；未进主线，tmux hook 信任顾虑为公开讨论背景）：本方案继承其三诉求并给出更强答案——恢复不靠 tmux hook 重建环境，而是常驻 server + 会话保持：会话从未消失，同时覆盖其没有的 agent 状态检测。tmux hook 不作为依赖；手工 tmux 会话归属证据完整时进入 managed tmux；主机配置入口复用是待定项。Codex / OpenCode 证明协议与 serve / attach 路线可行（归属、四态证据与隐私边界以自身验收为准）；hapi 证明 wrapper 可行、不证明归属检测与统计 gate；VS Code Remote 为先例类比。
-
----
